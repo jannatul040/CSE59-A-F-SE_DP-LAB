@@ -148,6 +148,9 @@ The **Diabetes Prediction System** is a standalone web-based application that ca
 ## 4. System Models
 
 > -   **CONTEXT DIAGRAM**  
+
+<img width="1652" height="900" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/8473d74a-4b6e-43e6-b1a4-64af9c9dc59b" />
+
 >     _Shows interactions between users, healthcare professionals, and external systems like EHR and wearable devices._
 
 ----------
