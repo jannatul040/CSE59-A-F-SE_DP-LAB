@@ -1,41 +1,35 @@
-lass patient{
-    private String patientName;
-    private String nationalId;
 
-    public patient(String patientName, String nationalId){
-        this.patientName = patientName;
-        this.nationalId = nationalId;
-    }
-    public String getPatientName(){
-        return patientName;
+interface OptimizableModel {
+    void quantize();
+}
 
-    }
-    public String getNationalId(){
-        return nationalId;
+class ResNet18 implements OptimizableModel {
+    public void quantize() {
+        System.out.println("Applying int8 quantization for ResNet-18.");
     }
 }
 
-    
-class IdValidator{
-    public boolean validate(String nationalId){
-        return nationalId.length() == 10|| nationalId.length() == 17;
+class MobileNet implements OptimizableModel {
+    public void quantize() {
+        System.out.println("Applying dynamic quantization for MobileNet.");
     }
 }
 
-class SmsService{
-    private IdValidator validator = new IdValidator();
-
-    public void sendConfirmation(patient patient){
-        if(validator.validate(patient.getNationalId())){
-            System.out.println("Sending SMS to "+ patient.getPatientName()+ ":Registration successful");
-        }
-    } 
+class InferenceEngine {
+    public void process(OptimizableModel model) {
+        model.quantize();
+    }
 }
-public class Main3 {
+
+public class Main {
     public static void main(String[] args) {
-    patient patient = new patient("Rahim", "1234567890");   
-        SmsService sms = new SmsService();
-        sms.sendConfirmation(patient);
+
+        OptimizableModel model1 = new ResNet18();
+        OptimizableModel model2 = new MobileNet();
+
+        InferenceEngine engine = new InferenceEngine();
+
+        engine.process(model1);
+        engine.process(model2);
     }
-    
 }
